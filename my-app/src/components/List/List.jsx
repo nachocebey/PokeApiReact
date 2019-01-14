@@ -1,31 +1,38 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Row from '../../components/Row/Row';
-import allPokemonsFromApi from '../List/Service';
+//import allPokemonsFromApi from '../List/Service';
 
 import './List.css';
 
 export class List extends Component {
   static propTypes = {
-    pokeList : PropTypes.array
+    pokeList: PropTypes.array
   };
 
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.setState({pokeList:[]});
+    this.state = { pokeList: [] };
 
   }
 
-  componentDidMount(){
-    this.setState({pokeList : allPokemonsFromApi})
+  getAllPokemonsNamesFromApi = () => {
+    const pokeUrl = `https://pokeapi.co/api/v2/pokemon/`;
+    fetch(pokeUrl)
+      .then(response => response.json())
+      .then(data => this.setState({ pokeList: data.results }))
   }
 
   render() {
     return (
-      <div>
-        <Row />
-      </div>
+      this.state.pokeList.slice(0, 30).map(pokemon => (
+        <Row key={pokemon.name} pokemon={pokemon} />
+      ))
     );
+  }
+
+  componentDidMount = () => {
+    this.getAllPokemonsNamesFromApi();
   }
 }
 

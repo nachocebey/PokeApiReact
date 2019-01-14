@@ -1,11 +1,11 @@
 import React from 'react';
-
 import './Row.css';
 
-const Row = (pokemon) => (
+const Row = ({pokemon}) => (
   <tr className="Row">
     <th>{pokemon.name}</th>
-    <th>{pokemon.id}</th>
+    <th>{pokemon.url}</th>
+    <th>{pokemon.name}</th>
   </tr>
 );
 

@@ -5,15 +5,11 @@ import './HeaderTable.css';
 export class HeaderTable extends Component {
   render() {
     return (
-      <div>
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>Types</th>
-            <th>Pokedex ID</th>
-          </tr>
-        </table>
-      </div>
+      <tr>
+        <th>Name</th>
+        <th>Pokemon Id</th>
+        <th>Get Info</th>
+      </tr>
     );
   }
 }
