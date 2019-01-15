@@ -1,37 +1,52 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ApiPokemon from './ApiPokemon'
+//import ApiPokemon from './ApiPokemon';
 import './DetailsList.css';
 
 export class DetailsList extends Component {
   static propTypes = {
     pokeId: PropTypes.string,
-    apiPokemon: PropTypes.object
+    name: PropTypes.string,
+    height: PropTypes.string,
+    weight: PropTypes.string,
+    base_experience: PropTypes.string
   };
 
   constructor(props) {
-    super(props)
-    this.state = this.props.pokeId;
+    super(props);
+    this.state = {
+      pokeId: this.props.pokeId,
+      name: "",
+      height: "",
+      weight: "",
+      base_experience: ""
+    };
 
   }
 
-  // getPokemonInfo = () => {
-  //   const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${this.props.pokeId}`;
-  //   fetch(pokeUrl)
-  //     .then(response => response.json())
-  // }
+  showPokemonInfo = () => {
+    //const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonName}/`;
+    const pokeUrl = `venusaur.json`;
+    fetch(pokeUrl)
+      .then(response => response.json())
+      .then(console.log("Entra"))
+      .then(myJson => this.setState({ name: myJson.name }))
+      .then(console.log("Sale"))
+      .catch(() => {
+        console.log("Error");
+      })
+  }
 
-  // componentDidMount() {
-  //   this.getPokemonInfo();
-  // };
+  componentDidMount() {
+    this.showPokemonInfo();
+  }
 
   render() {
-    debugger;
-    return (<div>{this.props.pokeId}</div>)
-    
+    return (<div> {this.state.pokeId}</div >)
+
   };
 
 
 
-};
+}
 export default DetailsList;

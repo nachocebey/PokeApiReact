@@ -2,24 +2,25 @@ import React, { Component, Fragment } from 'react';
 import { Header } from '../../components/Header/Header';
 import { DetailsList } from '../../components/DetailsList/DetailsList';
 import PropTypes from 'prop-types';
-import './Details.css';
+import '../App/App.css';
 
 class Details extends Component {
   static propTypes = {
-    param: PropTypes.string
+    params: PropTypes.object
   };
 
   constructor(props) {
     super(props);
-    this.state = (props.match.params.pokeId);
+    this.state = { pokeId: props.match.params.pokeId };
+    
   }
 
   render() {
     return (
-      <div className="Details">
+      <div className="App">
         <Fragment>
           <Header />
-          <DetailsList pokeId={this.props.match.params.pokeId} />
+          <DetailsList pokeId={this.state.pokeId} />
         </Fragment>
       </div>
     );
