@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Root from './containers/Root/Root';
 import createHistory from 'history/createBrowserHistory';
+import Root from './containers/Root/Root';
+
 
 const browserHistoryStore =  createHistory();
 

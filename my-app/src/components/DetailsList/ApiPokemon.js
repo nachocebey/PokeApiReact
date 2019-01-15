@@ -5,6 +5,5 @@ export default class ApiPokemon {
       this.height = height;
       this.weight = weight;
       this.base_experience = base_experience;
-
   }
 }

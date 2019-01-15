@@ -1,36 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ApiPokemon from './ApiPokemon';
-
+import ApiPokemon from './ApiPokemon'
 import './DetailsList.css';
 
 export class DetailsList extends Component {
   static propTypes = {
-    pokeId: PropTypes.string
+    pokeId: PropTypes.string,
+    apiPokemon: PropTypes.object
   };
 
   constructor(props) {
     super(props)
     this.state = this.props.pokeId;
-    this.state = {p}
-    debugger;
+
   }
 
-  getPokemonInfo = () => {
-    const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${this.props.pokeId}`;
-    fetch(pokeUrl)
-      .then(response => response.json())
-      .then(data => {
-        const apiPokemon = new ApiPokemon(data.id, data.name, data.weigh, data.height, data.base_experience)
-      })
-  }
+  // getPokemonInfo = () => {
+  //   const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${this.props.pokeId}`;
+  //   fetch(pokeUrl)
+  //     .then(response => response.json())
+  // }
 
-  componentDidMount() {
-    this.getPokemonInfo();
-  };
+  // componentDidMount() {
+  //   this.getPokemonInfo();
+  // };
 
   render() {
-    return (<div>{apiPokemon.name}</div>)
+    debugger;
+    return (<div>{this.props.pokeId}</div>)
+    
   };
 
 
