@@ -5,7 +5,7 @@ const Row = ({pokemon}) => (
   <tr className="Row">
     <th>{pokemon.name}</th>
     <th>{pokemon.url}</th>
-    <th>{pokemon.name}</th>
+    <th><button type="button">Click Me!</button></th>
   </tr>
 );
 
