@@ -27,7 +27,6 @@ export class DetailsList extends Component {
   }
 
   render() {
-    debugger;
     return (
       <div>
         <div> Id: {this.state.pokeId}</div >
