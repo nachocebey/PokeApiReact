@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Row from '../../components/Row/Row';
-//import allPokemonsFromApi from '../List/Service';
+import getPokeInfo from '../../Services/Service'
 
 import './List.css';
 
@@ -16,13 +16,6 @@ export class List extends Component {
 
   }
 
-  getAllPokemonsNamesFromApi = () => {
-    const pokeUrl = `https://pokeapi.co/api/v2/pokemon/`;
-    fetch(pokeUrl)
-      .then(response => response.json())
-      .then(data => this.setState({ pokeList: data.results }))
-  }
-
   render() {
     return (
       this.state.pokeList.slice(0, 30).map(pokemon => (
@@ -32,7 +25,9 @@ export class List extends Component {
   }
 
   componentDidMount = () => {
-    this.getAllPokemonsNamesFromApi();
+    const pokeUrl = `https://pokeapi.co/api/v2/pokemon/`;
+    getPokeInfo(pokeUrl)
+    .then(data => this.setState({ pokeList: data.results }))
   }
 }
 

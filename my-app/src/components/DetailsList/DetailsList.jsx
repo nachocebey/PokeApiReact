@@ -1,52 +1,44 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-//import ApiPokemon from './ApiPokemon';
 import './DetailsList.css';
+import getPokeInfo from '../../Services/Service';
 
 export class DetailsList extends Component {
   static propTypes = {
-    pokeId: PropTypes.string,
-    name: PropTypes.string,
-    height: PropTypes.string,
-    weight: PropTypes.string,
-    base_experience: PropTypes.string
+    pokemon: PropTypes.object,
+    pokeId: PropTypes.string
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      pokeId: this.props.pokeId,
-      name: "",
-      height: "",
-      weight: "",
-      base_experience: ""
+      pokemon: {},
+      pokeId: this.props.pokeId
     };
-
-  }
-
-  showPokemonInfo = () => {
-    //const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonName}/`;
-    const pokeUrl = `venusaur.json`;
-    fetch(pokeUrl)
-      .then(response => response.json())
-      .then(console.log("Entra"))
-      .then(myJson => this.setState({ name: myJson.name }))
-      .then(console.log("Sale"))
-      .catch(() => {
-        console.log("Error");
-      })
   }
 
   componentDidMount() {
-    this.showPokemonInfo();
+    const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${this.state.pokeId}/`;
+
+    getPokeInfo(pokeUrl)
+      .then(myJson => this.setState({
+      pokemon: myJson
+    }))
   }
 
   render() {
-    return (<div> {this.state.pokeId}</div >)
-
+    debugger;
+    return (
+      <div>
+        <div> Id: {this.state.pokeId}</div >
+        <div> Name: {this.state.pokemon.name}</div >
+        <div> Height: {this.state.pokemon.height}</div >
+        <div> Weight: {this.state.pokemon.weight}</div >
+        <div> Base Experience: {this.state.pokemon.base_experience}</div >
+        <img src={this.state.pokemon.sprites && this.state.pokemon.sprites.front_default} alt="Logo" />
+      </div>
+    )
   };
-
-
 
 }
 export default DetailsList;
