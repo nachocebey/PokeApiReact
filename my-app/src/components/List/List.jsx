@@ -7,27 +7,56 @@ import './List.css';
 
 export class List extends Component {
   static propTypes = {
-    pokeList: PropTypes.array
+    pokeList: PropTypes.array,
+    maxSelection: PropTypes.number,
+    totalSelections: PropTypes.number
   };
 
   constructor(props) {
     super(props)
-    this.state = { pokeList: [] };
+    this.state = {
+      pokeList: [],
+      maxSelection: 2,
+      totalSelections: 0
+    };
+  }
 
+  handleInputChange = (sender) => {
+    const checkState = sender.currentTarget.checked;
+    const total = this.state.totalSelections;
+    const max = this.state.maxSelection;
+
+    if (checkState) {
+      if (total >= max) {
+        sender.currentTarget.checked = false;
+      }
+      else {
+
+
+      }
+    }
   }
 
   render() {
     return (
-      this.state.pokeList.slice(0, 30).map(pokemon => (
-        <Row key={pokemon.name} pokemon={pokemon} />
-      ))
+      <tr>
+        <tr>
+        <button type="button" disabled={this.state.totalSelections === this.state.maxSelection}>Compare</button>
+        </tr>
+        {
+          this.state.pokeList.slice(0, 30).map(pokemon => (
+            <Row key={pokemon.name} pokemon={pokemon} handleInputChange={this.handleInputChange} />
+          ))
+        }
+      </tr>
     );
   }
 
   componentDidMount = () => {
     const pokeUrl = `https://pokeapi.co/api/v2/pokemon/`;
     getPokeInfo(pokeUrl)
-    .then(data => this.setState({ pokeList: data.results }))
+      .then(data => this.setState({ pokeList: data.results }))
+
   }
 }
 

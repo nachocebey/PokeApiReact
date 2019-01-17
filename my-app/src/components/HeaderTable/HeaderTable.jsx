@@ -7,7 +7,8 @@ export class HeaderTable extends Component {
     return (
       <tr>
         <th>Name</th>
-        <th>Pokemon Id</th>
+        <th>Compare</th>
+        <th>Get Pokemon Info</th>
       </tr>
     );
   }

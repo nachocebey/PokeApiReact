@@ -2,7 +2,7 @@ import React from 'react';
 import './Button.css';
 import { Route } from 'react-router-dom'
 
-export const Button = ({ url, history }) => (
+export const Button = ({ url }) => (
   <Route render={({ history}) => (
     <button
       type='button'
