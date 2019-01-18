@@ -18,14 +18,16 @@ export class Row extends Component {
 
   render() {
     return (
-      <tr /*className="Row"*/>
-        <td>{this.props.pokemon.name}</td>
+      <tr>
+        <td><h5>{this.props.pokemon.name}</h5></td>
         <td>
+          <h6>Select: &nbsp; 
           <input
             name="isGoing"
             type="checkbox"
             onChange={this.props.handleInputChange}
           />
+          </h6>
         </td>
         <td>
           <Button key={this.props.pokemon.name} url={`Details/${this.props.pokemon.name}`} />

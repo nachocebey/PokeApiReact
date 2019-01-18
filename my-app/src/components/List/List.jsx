@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Row from '../../components/Row/Row';
 import getPokeInfo from '../../Services/Service'
+import { HeaderTable } from '../../components/HeaderTable/HeaderTable';
 
 import './List.css';
 
@@ -15,7 +16,11 @@ export class List extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      pokeList: [],
+      pokeList: [
+        {
+          isSelected: false,
+        }
+      ],
       maxSelection: 2,
       totalSelections: 0
     };
@@ -39,16 +44,21 @@ export class List extends Component {
 
   render() {
     return (
-      <tr>
-        <tr>
+      <div>
         <button type="button" disabled={this.state.totalSelections === this.state.maxSelection}>Compare</button>
-        </tr>
-        {
-          this.state.pokeList.slice(0, 30).map(pokemon => (
-            <Row key={pokemon.name} pokemon={pokemon} handleInputChange={this.handleInputChange} />
-          ))
-        }
-      </tr>
+        <table className="table table-bordered">
+          <thead class="thead-dark">
+            <HeaderTable />
+          </thead>
+          <tbody>
+            {
+              this.state.pokeList.slice(0, 30).map(pokemon => (
+                <Row key={pokemon.name} pokemon={pokemon} handleInputChange={this.handleInputChange} />
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
     );
   }
 
