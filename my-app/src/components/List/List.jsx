@@ -64,7 +64,7 @@ export class List extends Component {
   render() {
     return (
       <div>
-        <Button history={this.props.history} url={`Comparision/${this.state.checkedPokemons[0]}/${this.state.checkedPokemons[1]}`} name={"Compare"} buttonDisable={} />
+        <Button history={this.props.history} url={`Comparision/${this.state.checkedPokemons[0]}/${this.state.checkedPokemons[1]}`} name={"Compare"} /*buttonDisable={}*/ />
         <table className="table table-bordered">
           <thead class="thead-dark">
             <HeaderTable />
