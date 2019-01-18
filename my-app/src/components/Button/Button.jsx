@@ -1,16 +1,21 @@
 import React from 'react';
 import './Button.css';
-import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
-export const Button = ({ url }) => (
-  <Route render={({ history}) => (
+export const Button = ({ url, history, name }) => (
     <button
       type='button'
-      onClick={() => { history.push(url) }}
+      onClick={() => history.push(url) }
     >
-      Get pokemon info
+      {name}
     </button>
-  )} />
 );
+
+Button.propTypes = {
+  url: PropTypes.string.isRequired,
+  history: PropTypes.object,
+  innerHtml: PropTypes.string,
+  };
+
 
 export default Button;

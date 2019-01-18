@@ -9,7 +9,7 @@ class App extends Component {
       <div>
         <Fragment>
           <Header />
-          <List />
+          <List history={this.props.history} />
         </Fragment>
       </div>
     );

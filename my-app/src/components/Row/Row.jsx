@@ -6,7 +6,8 @@ import './Row.css';
 export class Row extends Component {
   static propTypes = {
     currentData: PropTypes.array,
-    limit: PropTypes.number
+    limit: PropTypes.number,
+    history: PropTypes.object,
   };
 
   constructor(props) {
@@ -17,24 +18,23 @@ export class Row extends Component {
   }
 
   render() {
+    const {name} = this.props.pokemon;
     return (
       <tr>
-        <td><h5>{this.props.pokemon.name}</h5></td>
+        <td><h5>{name}</h5></td>
         <td>
-          <h6>Select: &nbsp; 
+          <h6>Select: &nbsp;
           <input
-            name="isGoing"
+            name={name}
             type="checkbox"
             onChange={this.props.handleInputChange}
           />
           </h6>
         </td>
         <td>
-          <Button key={this.props.pokemon.name} url={`Details/${this.props.pokemon.name}`} />
+          <Button history={this.props.history} url={`Details/${name}`} name={"Get Pokemon Info"} />
         </td>
       </tr>
-
-
     )
   };
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './DetailsList.css';
-import getPokeInfo from '../../Services/Service';
+import getPokeInfo from '../../Services/getApiInfo';
 
 export class DetailsList extends Component {
   static propTypes = {
